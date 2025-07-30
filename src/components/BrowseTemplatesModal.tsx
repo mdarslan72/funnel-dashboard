@@ -20,11 +20,19 @@ export const BrowseTemplatesModal: React.FC<BrowseTemplatesModalProps> = ({
   const [selectedCategory, setSelectedCategory] = useState("All Templates");
 
   if (!isOpen) return null;
-
+  console.log("Search Term:", searchTerm);
+  mockTemplates.forEach((template) => {
+    console.log("Template:", template.name.toLowerCase());
+    console.log("Matches Search Term:", searchTerm.toLowerCase());
+    console.log(template.name.toLowerCase().includes(searchTerm.toLowerCase()));
+    console.log("Selected Category:", selectedCategory);
+    console.log(template.category === selectedCategory);
+  });
   const filteredTemplates = mockTemplates.filter(
     (template) =>
-      selectedCategory === "All Templates" ||
-      template.category === selectedCategory
+      (selectedCategory === "All Templates" ||
+        template.category === selectedCategory) &&
+      template.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   const handleClose = () => {

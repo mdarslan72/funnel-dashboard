@@ -16,12 +16,14 @@ export const TemplateView: React.FC<TemplateViewProps> = ({
 }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All Templates");
-
+  console.log("Mock Templates:", mockTemplates);
   const filteredTemplates = mockTemplates.filter(
     (template) =>
       selectedCategory === "All Templates" ||
-      template.category === selectedCategory
+      template.category === selectedCategory ||
+      template.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
+  console.log("Filtered Templates:", filteredTemplates);
 
   return (
     <div className="min-h-screen bg-gray-50">

@@ -6,6 +6,7 @@ interface TemplateGridProps {
 }
 
 export const TemplateGrid: React.FC<TemplateGridProps> = ({ templates }) => {
+  console.log("Rendering TemplateGrid with templates:", templates);
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
       {templates.map((template) => (
